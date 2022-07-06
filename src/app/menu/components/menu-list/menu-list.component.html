@@ -1,0 +1,42 @@
+<section class="mx-auto">
+    <!-- Table menu > start -->
+    <div class="container my-5">
+
+        <!-- Search component > start -->
+        <!-- <input type="text" class="form-control" id="search-text" aria-describedby="search-text" 
+        [(ngModel)]="menuFilterText" placeholder="Enter text to search" 
+        autofocus> -->
+
+        <!-- ngModel Input -->
+        <input type="text" name="search" placeholder="Search for specific menu item" maxlength="255" [(ngModel)]="menuFilter" class="form-control mb-3" >
+        <!-- Search component > end -->
+
+        <table class="table table-striped table-bordered table-responsive-sm">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Size</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Date added</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let item of filteredMenuItems(menuList)">
+                    <!-- <tr *ngFor="let item of menuList"> -->
+                    <th>{{ item.name }}</th>
+                    <td>{{ item.size }}cm</td>
+                    <td>${{ item.price }}</td>
+                    <td>{{ item.date | date:'dd/MM/y HH:mm' }}</td>
+                    <td class="table__last-row text-center">
+                        <app-edit-menu-item [menuList]="menuList" [getSelectedItem]="item"></app-edit-menu-item>
+                        <button class="btn btn-secondary m-1" (click)="deleteMenuItem(item.slug)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <app-add-menu-item [menuList]="menuList"></app-add-menu-item>
+    </div>
+    <!-- Table menu > end -->
+</section>

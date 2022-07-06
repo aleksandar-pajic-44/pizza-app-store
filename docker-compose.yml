@@ -1,0 +1,11 @@
+version: "2"
+services:
+  app:
+    image: benj0c/aws-node-chrome
+    container_name: pizza-store-app
+    ports:
+      - 4200:4200
+    working_dir: /application
+    volumes:
+      - .:/application:cached
+    command: scripts/launch

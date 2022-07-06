@@ -1,0 +1,7 @@
+.modal {
+    background: #00000070;
+    &__show {
+        display: block;
+        opacity: 1;
+    }
+}
